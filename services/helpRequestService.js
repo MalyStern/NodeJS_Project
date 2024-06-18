@@ -1,7 +1,7 @@
-import helpRequestRepo from "../repositories/helpRequestRepo";
-//import baseService from "./baseService";
+import helpRequestRepo from "../repositories/helpRequestRepo.js";
+import baseService from "./baseService.js"
 
-class helpRequestService extends BaseService{
+class helpRequestService extends baseService{
     constructor(repo){
         super(repo);
     }

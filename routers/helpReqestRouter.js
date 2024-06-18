@@ -1,12 +1,12 @@
 import express from 'express';
-import helpRequestController from '../controllers.js/helpRequestController';
+import helpRequestController from "../controllers/helpRequestController.js"
 
-const router = express.Router();
+const requestRouter = express.Router();
 
-router.get('/', helpRequestController.getAll);
+requestRouter.get('/', helpRequestController.getAll);
 
-router.get('/:id', helpRequestController.getById);
+requestRouter.get('/:id', helpRequestController.getById);
 
-router.put('/:id', helpRequestController.update);
+requestRouter.put('/:id', helpRequestController.update);
 
-export default router;
+export default requestRouter;

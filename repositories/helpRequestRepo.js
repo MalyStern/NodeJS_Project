@@ -40,4 +40,4 @@ class helpRequestRepo {
         }
     }
 }
-export default new helpRequestRepo(Request);
+export default new helpRequestRepo(helpRequest);

@@ -1,5 +1,5 @@
 import { configDotenv } from 'dotenv';
-import router from './routers/helpReqestRouter'
+import requestRouter from './routers/helpReqestRouter.js'
 
 import  express  from 'express';
 const app = express();
@@ -11,7 +11,7 @@ const port = process.env.PORT;
 
 server.use(express.json());
 
-server.use('/api/help-requests', router);
+server.use('/api/helpRequest', requestRouter);
 server.use('/', (req, res) => {
     res.send('welcome to our api');
 });
