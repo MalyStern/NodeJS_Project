@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const helpRequestSchema = new Schema({
-    _id: Schema.Types.ObjectId,
+    _id: Number,
     location : Number,
     problem : String,
     phone_number : String,

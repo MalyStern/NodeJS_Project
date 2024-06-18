@@ -41,3 +41,56 @@ class helpRequestRepo {
     }
 }
 export default new helpRequestRepo(helpRequest);
+
+
+const pipelineInitial = [
+    {
+      '$lookup': {
+        'from': 'Status', 
+        'localField': 'status', 
+        'foreignField': '_id', 
+        'as': 'status'
+      }
+    }, {
+      '$lookup': {
+        'from': 'Volunteers', 
+        'localField': 'volunteer_id', 
+        'foreignField': '_id', 
+        'as': 'volunteer_details'
+      }
+    }, {
+      '$lookup': {
+        'from': 'Locations', 
+        'localField': 'location', 
+        'foreignField': 'code', 
+        'as': 'location'
+      }
+    }, {
+      '$unwind': {
+        'path': '$location'
+      }
+    }, {
+      '$unwind': {
+        'path': '$status'
+      }
+    }, {
+      '$unwind': {
+        'path': '$volunteer_details'
+      }
+    }, {
+      '$addFields': {
+        'location_descreption': '$location.location', 
+        'status_descreption': '$status.status_mode', 
+        'volunteer_name': '$volunteer_details.name'
+      }
+    }, {
+      '$project': {
+        'volunteer_details': 0, 
+        'status': 0, 
+        'location': 0, 
+        'priority_code': 0, 
+        'volunteer_id': 0
+      }
+    }
+  ]
+  

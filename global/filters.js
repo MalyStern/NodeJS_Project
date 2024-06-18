@@ -1,21 +1,20 @@
 function byParams(filters) {
-    let query = { status: new RegExp('w', 'i') };
-    let locationFilter = [];
+    let query = {}; 
     if (filters) {
-        if (filters.status) {
-            query.status = new RegExp(filters.status, 'i');
+        if (filters) {
+            if (filters.location_descreption) { 
+                query.location_descreption = new RegExp(filters.location_descreption, 'i'); 
         }
 
-        if (filters.location) {
-            query.location = new RegExp(filters.status, 'i');
+        if (filters.status_descreption) { 
+            query.status_descreption = new RegExp(filters.status_descreption, 'i'); 
         }
     }
-    const pipeline = [{ '$match': query }]
-    if (locationFilter.length > 0) {
-        pipeline.push({ '$match': { '$or': locationFilter } });
-    }
+
+    const pipeline = [{ '$match': query }];
     return pipeline;
-}
+}}
+
 
 function byId(id) {
     const pipeline = [{ '$match': { '_id': Number(id) } }]
