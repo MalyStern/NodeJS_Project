@@ -11,11 +11,11 @@ class VolunteerController extends baseController{
     async add(req, res, next)
     {
        try{
-            let response = this.service.add(req.body);
-            return response.status(200).json(response);
+            let response = await this.service.add(req.body);
+            return res.status(200).json(response);
        } 
        catch(err){
-        next(err);
+          next(err);
        }
     }
 

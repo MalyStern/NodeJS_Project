@@ -7,6 +7,6 @@ volunteerRouter.get('/', VolunteerController.getAll);
 
 volunteerRouter.get('/:id', VolunteerController.getById);
 
-volunteerRouter.post('/:id', VolunteerController.add);
+volunteerRouter.post('/', VolunteerController.add);
 
 export default volunteerRouter;

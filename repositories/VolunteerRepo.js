@@ -8,7 +8,6 @@ class VolunteerRepo {
     }
     async getAll() {
         let vol = await this.model.find({}).exec();
-        console.log(vol);
         return vol;
     }
 
