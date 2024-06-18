@@ -6,9 +6,14 @@ function byParams(filters) {
                 query.location_descreption = new RegExp(filters.location_descreption, 'i'); 
         }
 
-        if (filters.status_descreption) { 
+            if (filters.status_descreption) { 
             query.status_descreption = new RegExp(filters.status_descreption, 'i'); 
         }
+            
+            if (filters.priority_descreption) { 
+            query.priority_descreption = new RegExp(filters.priority_descreption, 'i'); 
+        }
+
     }
 
     const pipeline = [{ '$match': query }];

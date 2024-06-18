@@ -5,6 +5,10 @@ class helpRequestService extends baseService{
     constructor(repo){
         super(repo);
     }
+    
+    async getAll(filters){
+        return await this.repo.getAll(filters);
+    }
 
     async update(id, data){
         try{

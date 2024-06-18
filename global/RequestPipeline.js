@@ -23,7 +23,14 @@ const pipeline = [
         'foreignField': 'code', 
         'as': 'location'
       }
-    }, {
+    },     {
+      '$lookup': {
+        'from': 'Priority', 
+        'localField': 'priority_code', 
+        'foreignField': '_id', 
+        'as': 'priority'
+      }
+    },{
       '$unwind': {
         'path': '$location'
       }
@@ -35,19 +42,26 @@ const pipeline = [
       '$unwind': {
         'path': '$volunteer_details'
       }
+    },{
+      '$unwind':{
+        'path': '$priority',
+        'preserveNullAndEmptyArrays': true
+      }
     }, {
       '$addFields': {
         'location_descreption': '$location.location', 
         'status_descreption': '$status.status_mode', 
-        'volunteer_name': '$volunteer_details.name'
+        'volunteer_name': '$volunteer_details.name',
+        'priority_descreption': '$priority.priority'
       }
-    }, {
+    },{
       '$project': {
         'volunteer_details': 0, 
         'status': 0, 
         'location': 0, 
         'priority_code': 0, 
-        'volunteer_id': 0
+        'volunteer_id': 0,
+        'priority': 0
       }
     }
   ]
